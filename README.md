@@ -1,2 +1,2 @@
 # script.ael.offlinescraper
-AEL Offline scraper
+AEL Offline DB scraper

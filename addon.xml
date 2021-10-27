@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="script.ael.offlinescraper" name="Advanced Emulator Launcher: Offline scraper" version="0.0.1" provider-name="chrisism">
+<addon id="script.ael.offlinescraper" name="Advanced Emulator Launcher: Offline DB scraper" version="0.0.1" provider-name="chrisism">
   <requires>
       <import addon="xbmc.python" version="3.0.0"/>
       <import addon="script.module.ael" version="0.10.0"/>
@@ -8,8 +8,8 @@
       <provides>game</provides>
   </extension>
   <extension point="xbmc.addon.metadata">
-    <summary lang="en_GB">Offline scraper for AEL.</summary>
-    <description lang="en_GB">Offline scraper for AEL</description>
+    <summary lang="en_GB">Offline DB scraper for AEL.</summary>
+    <description lang="en_GB">Offline DB scraper for AEL</description>
     <platform>all</platform>
     <license>GNU General Public License version 2</license>
     <email>crizizz@gmail.com</email>

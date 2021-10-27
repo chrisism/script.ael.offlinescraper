@@ -28,11 +28,15 @@
                 </setting>
                 <setting id="ael.scraper.friendlyname" type="string" label="Scraper friendlyname" help="">
                     <level>4</level>
-                    <default>AEL offline scraper</default>
+                    <default>AEL offline</default>
                 </setting>
-                <setting id="ael.scraper.supported_types" type="string" label="Types supported by this scraper" help="">
+                <setting id="ael.scraper.supported_metadata" type="string" label="Metadata supported by this scraper" help="">
                     <level>4</level>
-                    <default>metadata|fanart|banner</default>
+                    <default>title|year|genre|developer|nplayers|esrb|plot</default>
+                </setting>
+                <setting id="ael.scraper.supported_assets" type="string" label="Assets supported by this scraper" help="">
+                    <level>4</level>
+                    <default>fanart|banner</default>
                 </setting>
             </group>
         </category>

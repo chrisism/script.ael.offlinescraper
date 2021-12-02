@@ -1,6 +1,6 @@
 ﻿# -*- coding: utf-8 -*-
 #
-# AEL Offline scraper plugin for AEL
+# AKL Offline scraper plugin for AKL
 # Scrapers
 #
 # --- Python standard library ---
@@ -15,14 +15,14 @@ import json
 # --- Kodi stuff ---
 import xbmcaddon
 
-# AEL main imports
-from ael import constants
-from ael.utils import kodilogging, io, kodi
+# AKL main imports
+from akl import constants
+from akl.utils import kodilogging, io, kodi
 
-from ael.scrapers import ScrapeStrategy, ScraperSettings
+from akl.scrapers import ScrapeStrategy, ScraperSettings
 
 # Local modules
-from resources.lib.scraper import AEL_Offline_Scraper
+from resources.lib.scraper import AKL_Offline_Scraper
 
 kodilogging.config() 
 logger = logging.getLogger(__name__)
@@ -47,14 +47,14 @@ def run_plugin():
     if io.is_linux():   logger.info('OS               "Linux"')
     for i in range(len(sys.argv)): logger.info('sys.argv[{}] "{}"'.format(i, sys.argv[i]))
     
-    parser = argparse.ArgumentParser(prog='script.ael.offlinescraper')
+    parser = argparse.ArgumentParser(prog='script.akl.offlinescraper')
     parser.add_argument('--cmd', help="Command to execute", choices=['launch', 'scan', 'scrape', 'configure'])
     parser.add_argument('--type',help="Plugin type", choices=['LAUNCHER', 'SCANNER', 'SCRAPER'], default=constants.AddonType.SCRAPER.name)
     parser.add_argument('--server_host', type=str, help="Host")
     parser.add_argument('--server_port', type=int, help="Port")
     parser.add_argument('--rom_id', type=str, help="ROM ID")
     parser.add_argument('--romcollection_id', type=str, help="ROM Collection ID")
-    parser.add_argument('--ael_addon_id', type=str, help="Addon configuration ID")
+    parser.add_argument('--akl_addon_id', type=str, help="Addon configuration ID")
     parser.add_argument('--settings', type=json.loads, help="Specific run setting")
     
     try:
@@ -80,21 +80,21 @@ def run_scraper(args):
                             args.server_host, 
                             args.server_port, 
                             settings, 
-                            AEL_Offline_Scraper(), 
+                            AKL_Offline_Scraper(), 
                             pdialog)
                         
     if args.rom_id is not None:
         scraped_rom = scraper_strategy.process_single_rom(args.rom_id)
         pdialog.endProgress()
         pdialog.startProgress('Saving ROM in database ...')
-        scraper_strategy.store_scraped_rom(args.ael_addon_id, args.rom_id, scraped_rom)
+        scraper_strategy.store_scraped_rom(args.akl_addon_id, args.rom_id, scraped_rom)
         pdialog.endProgress()
         
     if args.romcollection_id is not None:
         scraped_roms = scraper_strategy.process_collection(args.romcollection_id)
         pdialog.endProgress()
         pdialog.startProgress('Saving ROMs in database ...')
-        scraper_strategy.store_scraped_roms(args.ael_addon_id, args.romcollection_id, scraped_roms)
+        scraper_strategy.store_scraped_roms(args.akl_addon_id, args.romcollection_id, scraped_roms)
         pdialog.endProgress()
         
         

@@ -1,7 +1,7 @@
 #!/usr/bin/python -B
 # -*- coding: utf-8 -*-
 
-# Test AEL Offline metadata scraper.
+# Test AKL Offline metadata scraper.
 # First time a platform is used the XML database is loaded and cached for subsequent
 # calls until the scraper object is destroyed or the platform is changed.
 
@@ -17,9 +17,9 @@ logging.basicConfig(format = '%(asctime)s %(module)s %(levelname)s: %(message)s'
                 datefmt = '%m/%d/%Y %I:%M:%S %p', level = logging.DEBUG)
 logger = logging.getLogger(__name__)
 
-from resources.lib.scraper import AEL_Offline_Scraper
-from ael.utils import kodi, io
-from ael.api import ROMObj
+from resources.lib.scraper import AKL_Offline_Scraper
+from akl.utils import kodi, io
+from akl.api import ROMObj
 
 # --- Test data -----------------------------------------------------------------------------------
 games = {
@@ -68,16 +68,16 @@ class Test_offline_metadata(unittest.TestCase):
         
         addon_dir_mock.return_value = io.FileName(self.ROOT_DIR)
         #settings_mock.side_effect = lambda key: self.TEST_OUTPUT_DIR if key == 'scraper_cache_dir' else ''
-        #settings_mock.side_effect = lambda key: self.TEST_ASSETS_DIR if key == 'scraper_aeloffline_addon_code_dir' else ''
+        #settings_mock.side_effect = lambda key: self.TEST_ASSETS_DIR if key == 'scraper_akloffline_addon_code_dir' else ''
         
         # --- main ---------------------------------------------------------------------------------------
         print('*** Fetching candidate game list ********************************************************')
 
         # Set addon dir
-        print('Setting scraper_aeloffline_addon_code_dir = "{}"'.format(self.TEST_ASSETS_DIR))
+        print('Setting scraper_akloffline_addon_code_dir = "{}"'.format(self.TEST_ASSETS_DIR))
 
         # --- Create scraper object ---
-        scraper_obj = AEL_Offline_Scraper()
+        scraper_obj = AKL_Offline_Scraper()
         scraper_obj.set_verbose_mode(False)
         scraper_obj.set_debug_file_dump(True, self.TEST_OUTPUT_DIR)
         status_dic = kodi.new_status_dic('Scraper test was OK')

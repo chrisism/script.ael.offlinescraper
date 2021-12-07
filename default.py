@@ -37,7 +37,7 @@ addon_version   = addon.getAddonInfo('version')
 # ---------------------------------------------------------------------------------------------
 def run_plugin():
     # --- Some debug stuff for development ---
-    logger.info('------------ Called Advanced Emulator Launcher Plugin: Offline scraper ------------')
+    logger.info('------------ Called Advanced Kodi Launcher Plugin: Offline scraper ------------')
     logger.info('addon.id         "{}"'.format(addon_id))
     logger.info('addon.version    "{}"'.format(addon_version))
     logger.info('sys.platform     "{}"'.format(sys.platform))
@@ -67,7 +67,7 @@ def run_plugin():
     if args.type == constants.AddonType.SCRAPER.name  and args.cmd == 'scrape': run_scraper(args)
     else: kodi.dialog_OK(text=parser.format_help())
     
-    logger.debug('Advanced Emulator Launcher Plugin: Offline plugins -> exit')
+    logger.debug('Advanced Kodi Launcher Plugin: Offline plugins -> exit')
 # ---------------------------------------------------------------------------------------------
 # Scraper methods.
 # ---------------------------------------------------------------------------------------------
